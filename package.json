@@ -1,0 +1,24 @@
+{
+  "name": "electrum-require-components",
+  "version": "0.0.1",
+  "description": "Tiny tool to generate a source file with a list of requires.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epsitec-sa/electrum-require-components.git"
+  },
+  "keywords": [
+    "electrum",
+    "javascript",
+    "dynamic-require"
+  ],
+  "author": "Epsitec SA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epsitec-sa/electrum-require-components/issues"
+  },
+  "homepage": "https://github.com/epsitec-sa/electrum-require-components#readme"
+}
