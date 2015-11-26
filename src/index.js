@@ -7,17 +7,40 @@ import fs from 'fs';
 
 /* global process */
 
-var args = process.argv.slice (2);
+let dashdash = false;
+let optionWrap = false;
 
-if (args.length < 2) {
-  console.error ('Usage: electrum-require-components <dir> <suffix> <output>');
+var args = process.argv.slice (2).filter (arg => {
+  if (dashdash) {
+    return !!arg;
+  } else if (arg === '--') {
+    dashdash = true;
+  } else if (arg === '--wrap') {
+    optionWrap = true;
+  } else {
+    return !!arg;
+  }
+});
+
+if (args.length < 3) {
+  console.error ('Usage: electrum-require-components <relative-root> <dir> <suffix> <output>');
+  console.error ('  additional options:');
+  console.error ('  --wrap     Wraps all components with E.wrapComponent()');
   process.exit (1);
 }
 
-const rootDir    = path.join (process.cwd ());
-const dir        = args[0].split (/[\\/]/);
-const suffix     = args[1];
-const outputPath = args.length > 2 ? path.join (rootDir, args[2]) : null;
+const rootDir    = path.join (process.cwd (), args[0]);
+const dir        = args[1].split (/[\\/]/);
+const suffix     = args[2];
+const outputPath = args.length > 3 ? path.join (rootDir, args[3]) : null;
+
+function emitSource (result) {
+  if (optionWrap) {
+    return emit (result, `import {E} from 'electrum';`, name => `E.wrapComponent ('${name}', ${name})`);
+  } else {
+    return emit (result);
+  }
+}
 
 processDirectory (rootDir, dir, suffix, (err, result) => {
   if (err) {
@@ -25,7 +48,7 @@ processDirectory (rootDir, dir, suffix, (err, result) => {
     process.exit (1);
   }
   if (result) {
-    const source = emit (result);
+    const source = emitSource (result);
     if (!outputPath) {
       console.log (source);
     } else {
