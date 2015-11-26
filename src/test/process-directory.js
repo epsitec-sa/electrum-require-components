@@ -3,7 +3,8 @@
 import path from 'path';
 
 import {expect} from 'mai-chai';
-import {processDirectory} from '../process-directory.js';
+
+import processDirectory from '../process-directory.js';
 
 const rootDir = path.join (__dirname, '..');
 

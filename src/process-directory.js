@@ -3,9 +3,12 @@
 import fs from 'fs';
 import path from 'path';
 
-export function processDirectory (root, dir, suffix, next) {
-  if (typeof dir !== 'string') {
-    throw new Error ('path should be a string');
+export default function processDirectory (root, dir, suffix, next) {
+  if (typeof dir === 'string') {
+    dir = [dir];
+  }
+  if (Array.isArray (dir) === false) {
+    throw new Error ('dir should be a string or an array of strings');
   }
 
   const filter  = new RegExp (suffix.replace ('.', '\\.') + '$');
@@ -21,7 +24,7 @@ export function processDirectory (root, dir, suffix, next) {
     }
   }
 
-  traverse (root, [dir], extract, err => {
+  traverse (root, dir, extract, err => {
     if (err) {
       next (err);
     } else {
