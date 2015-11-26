@@ -12,6 +12,7 @@ babelConfig.babel = babel;
 module.exports = function (wallaby) {
   return {
     files: [
+      {pattern: 'src/sample/**/*.js'},
       {pattern: 'test/test-helper.js'},
       {pattern: 'src/*.js'}
     ],
