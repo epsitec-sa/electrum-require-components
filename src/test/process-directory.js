@@ -31,6 +31,5 @@ describe ('Require components', () => {
         done ();
       });
     });
-
   });
 });
