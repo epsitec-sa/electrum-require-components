@@ -28,6 +28,7 @@ export default function processDirectory (root, dir, suffix, next) {
     if (err) {
       next (err);
     } else {
+      result.sort ((a, b) => a[1].localeCompare (b[1]));
       next (err, result);
     }
   });
