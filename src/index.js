@@ -25,7 +25,7 @@ var args = process.argv.slice (2).filter (arg => {
 if (args.length < 3) {
   console.error ('Usage: electrum-require-components <relative-root> <dir> <suffix> <output>');
   console.error ('  additional options:');
-  console.error ('  --wrap     Wraps all components with E.wrapComponent()');
+  console.error ('  --wrap     Wraps all components with Electrum.wrap()');
   process.exit (1);
 }
 
@@ -36,7 +36,7 @@ const outputPath = args.length > 3 ? path.join (rootDir, args[3]) : null;
 
 function emitSource (result) {
   if (optionWrap) {
-    return emit (result, `import {E} from 'electrum';`, name => `E.wrapComponent ('${name}', ${name})`);
+    return emit (result, `import Electrum from 'electrum';`, name => `Electrum.wrap ('${name}', ${name})`);
   } else {
     return emit (result);
   }

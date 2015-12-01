@@ -1,13 +1,13 @@
 {
   "name": "electrum-require-components",
-  "version": "0.2.1",
+  "version": "1.0.1",
   "description": "Tiny tool to generate a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
     "electrum-require-components": "./bin/bin.js"
   },
   "scripts": {
-    "compile": "babel -d lib/ src/",
+    "compile": "rimraf ./lib && babel -d lib src",
     "prepublish": "npm run compile",
     "test": "mocha src/test/**/*.js"
   },
@@ -35,6 +35,7 @@
     "mai-chai": "^1.1.2",
     "mocha": "^2.3.4",
     "path": "^0.12.7",
-    "react": "^0.14.3"
+    "react": "^0.14.3",
+    "rimraf": "^2.4.4"
   }
 }
