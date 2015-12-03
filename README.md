@@ -18,18 +18,33 @@ Here is an example of a resulting source file with `--wrap`:
 ```javascript
 'use strict';
 import Electrum from 'electrum';
-import CheckBox from './widgets/Buttons/CheckBox.component.js'
-import Panel from './widgets/Layout/Panel.component.js';
-module.exports.CheckBox = Electrum.wrap ('CheckBox', CheckBox);
-module.exports.Panel = Electrum.wrap ('Panel', Panel);
+import _CheckBox from './widgets/Buttons/CheckBox.component.js'
+import _Panel from './widgets/Layout/Panel.component.js';
+export const CheckBox = Electrum.wrap ('CheckBox', _CheckBox);
+export const Panel = Electrum.wrap ('Panel', _Panel);
 ```
 
 And the same example without `--wrap`:
 
 ```javascript
 'use strict';
-import CheckBox from './widgets/Buttons/CheckBox.component.js'
-import Panel from './widgets/Layout/Panel.component.js';
-module.exports.CheckBox = CheckBox;
-module.exports.Panel = Panel;
+import _CheckBox from './widgets/Buttons/CheckBox.component.js'
+import _Panel from './widgets/Layout/Panel.component.js';
+export const CheckBox = _CheckBox;
+export const Panel = _Panel;
+```
+
+## Companion files
+
+If there are companion files (e.g. `Panel.styles.js` located beside
+the `Panel.component.js` file), then they will also get imported and
+provided to `Electrum.wrap` as an additional argument:
+
+```javascript
+'use strict';
+import Electrum from 'electrum';
+import _Panel from './widgets/Layout/Panel.component.js';
+import _Panel$about from './widgets/Layout/Panel.about.js';
+import _Panel$styles from './widgets/Layout/Panel.styles.js';
+export const Panel = Electrum.wrap ('Panel', _Panel, {about: _Panel$about, styles: _Panel$styles});
 ```

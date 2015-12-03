@@ -3,6 +3,18 @@
 import fs from 'fs';
 import path from 'path';
 
+function findSuffixes (name, files) {
+  let result = [];
+  for (let file of files) {
+    const regex = new RegExp (`${name}\.([a-zA-Z]+)\.js`);
+    const match = file.match (regex);
+    if (match) {
+      result.push (match[1]);
+    }
+  }
+  return result;
+}
+
 export default function processDirectory (root, dir, suffix, next) {
   if (typeof dir === 'string') {
     dir = [dir];
@@ -15,12 +27,13 @@ export default function processDirectory (root, dir, suffix, next) {
   const pattern = new RegExp ('([^\\/\\\\]+)' + filter.source);
   let   result  = [];
 
-  function extract (dirs, file) {
+  function extract (dirs, file, files) {
     const matches = file.match (pattern);
     if (matches) {
       const name = matches[1];
       const filePath = [...dirs, file].join ('/');
-      result.push ([name, filePath]);
+      const suffixes = findSuffixes (name, files.filter (x => x !== file));
+      result.push ([name, filePath, suffixes]);
     }
   }
 
@@ -60,7 +73,7 @@ function traverse (root, dirs, collect, next) {
                 });
               } else {
                 if (stats.isFile ()) {
-                  collect (dirs, file);
+                  collect (dirs, file, files);
                   if (--pending === 0) {
                     next ();
                   }

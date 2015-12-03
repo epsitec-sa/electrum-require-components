@@ -1,6 +1,6 @@
 {
   "name": "electrum-require-components",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Tiny tool to generate a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
@@ -9,7 +9,8 @@
   "scripts": {
     "compile": "rimraf ./lib && babel -d lib src",
     "prepublish": "npm run compile",
-    "test": "mocha src/test/**/*.js"
+    "test": "mocha src/test/**/*.js",
+    "livetest": "npm run compile && node lib/index.js --wrap ./src sample .foo.js foo.js"
   },
   "repository": {
     "type": "git",
