@@ -3,6 +3,8 @@
 import fs from 'fs';
 import path from 'path';
 
+/******************************************************************************/
+
 function findSuffixes (name, files) {
   let result = [];
   for (let file of files) {
@@ -14,6 +16,8 @@ function findSuffixes (name, files) {
   }
   return result;
 }
+
+/******************************************************************************/
 
 export default function processDirectory (root, dir, suffix, next) {
   if (typeof dir === 'string') {
@@ -46,6 +50,8 @@ export default function processDirectory (root, dir, suffix, next) {
     }
   });
 }
+
+/******************************************************************************/
 
 function traverse (root, dirs, collect, next) {
   const rootPath = path.join (root, ...dirs);
@@ -86,3 +92,5 @@ function traverse (root, dirs, collect, next) {
     }
   });
 }
+
+/******************************************************************************/

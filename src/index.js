@@ -6,6 +6,7 @@ import path from 'path';
 
 let dashdash = false;
 let optionWrap = false;
+let optionCrlf = false;
 
 var args = process.argv.slice (2).filter (arg => {
   if (dashdash) {
@@ -14,6 +15,8 @@ var args = process.argv.slice (2).filter (arg => {
     dashdash = true;
   } else if (arg === '--wrap') {
     optionWrap = true;
+  } else if (arg === '--crlf') {
+    optionCrlf = true;
   } else {
     return !!arg;
   }
@@ -25,9 +28,10 @@ if (args.length < 3) {
   console.error ('Usage: electrum-require-components <relative-root> <dir> <suffix> <output>');
   console.error ('  additional options:');
   console.error ('  --wrap     Wraps all components with Electrum.wrap()');
+  console.error ('  --crlf     Use CR+LF as line terminator (Windows source files)');
   process.exit (1);
 }
 
 import main from './main.js';
 
-main (rootDir, args, optionWrap);
+main (rootDir, args, {optionWrap, optionCrlf});

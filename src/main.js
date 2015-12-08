@@ -7,7 +7,9 @@ import fs from 'fs';
 
 /* global process */
 
-export default function main (rootDir, args, optionWrap) {
+/******************************************************************************/
+
+export default function main (rootDir, args, options) {
   const dir        = args[1].split (/[\\/]/);
   const suffix     = args[2];
   const outputPath = args.length > 3 ? path.join (rootDir, args[3]) : null;
@@ -21,7 +23,7 @@ export default function main (rootDir, args, optionWrap) {
   }
 
   function emitSource (result) {
-    if (optionWrap) {
+    if (options.optionWrap) {
       return emit (result, `import Electrum from 'electrum';`, emitWrap);
     } else {
       return emit (result);
@@ -34,10 +36,13 @@ export default function main (rootDir, args, optionWrap) {
       process.exit (1);
     }
     if (result) {
-      const source = emitSource (result);
+      let source = emitSource (result);
       if (!outputPath) {
         console.log (source);
       } else {
+        if (options.optionCrlf) {
+          source = source.split ('\n').join ('\r\n');
+        }
         fs.writeFile (outputPath, source, err => {
           if (err) {
             console.error (err);
@@ -50,3 +55,5 @@ export default function main (rootDir, args, optionWrap) {
     }
   });
 }
+
+/******************************************************************************/
