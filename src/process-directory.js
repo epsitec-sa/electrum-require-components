@@ -35,7 +35,7 @@ export default function processDirectory (root, dir, suffix, next) {
     const matches = file.match (pattern);
     if (matches) {
       const name = matches[1];
-      const filePath = [...dirs, file].join ('/');
+      const filePath = [...dirs, file].join (path.sep);
       const suffixes = findSuffixes (name, files.filter (x => x !== file));
       result.push ([name, filePath, suffixes]);
     }
