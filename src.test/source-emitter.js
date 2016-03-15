@@ -2,7 +2,7 @@
 
 import {expect} from 'mai-chai';
 
-import emit from '../source-emitter.js';
+import emit from '../src/source-emitter.js';
 
 describe ('Require components', () => {
   describe ('emit()', () => {

@@ -5,12 +5,12 @@ import fs from 'fs';
 
 import {expect} from 'mai-chai';
 
-import processDirectory from '../process-directory.js';
-import emit from '../source-emitter.js';
+import processDirectory from '../src/process-directory.js';
+import emit from '../src/source-emitter.js';
 
 /* global __dirname */
 
-const rootDir = path.join (__dirname, '..');
+const rootDir = path.join (__dirname, '../src');
 const outputPath = path.join (rootDir, 'foo.js');
 
 describe ('Require components', () => {
