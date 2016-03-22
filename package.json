@@ -13,7 +13,7 @@
     "mocha": "mocha lib.test/**/*.js",
     "prepublish": "npm run compile",
     "test": "npm run compile && npm run mocha",
-    "livetest": "npm run compile && node lib/index.js --wrap --crlf ./src sample .foo.js foo.js"
+    "livetest": "npm run compile && node lib/index.js --wrap ./src sample .foo.js foo.js"
   },
   "repository": {
     "type": "git",
