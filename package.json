@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/epsitec-sa/electrum-require-components#readme",
   "devDependencies": {
-    "babel-env": "^1.2.1",
-    "mai-chai": "^2.5.2",
+    "babel-env": "^1.2.2",
+    "mai-chai": "^2.5.3",
     "react": "^0.14.7",
     "rimraf": "^2.5.1",
     "require-self": "^0.1.0"
