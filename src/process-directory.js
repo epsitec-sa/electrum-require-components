@@ -11,7 +11,9 @@ function findSuffixes (name, files) {
     const regex = new RegExp (`${name}\.([a-zA-Z]+)\.js`);
     const match = file.match (regex);
     if (match) {
-      result.push (match[1]);
+      if (file.startsWith (name)) {
+        result.push (match[1]);
+      }
     }
   }
   return result;
