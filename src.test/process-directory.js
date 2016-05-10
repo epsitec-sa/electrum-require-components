@@ -32,5 +32,14 @@ describe ('Require components', () => {
         done ();
       });
     });
+
+    it ('produces expected results (2)', done => {
+      processDirectory (rootDir, 'other', '.component.js', (err, result) => {
+        expect (result).to.have.length (2);
+        expect (result[0]).to.deep.equal (['glyph-text-field', 'other/fields/glyph-text-field.component.js', []]);
+        expect (result[1]).to.deep.equal (['text-field', 'other/fields/text-field.component.js', []]);
+        done ();
+      });
+    });
   });
 });
