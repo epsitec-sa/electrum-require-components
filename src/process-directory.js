@@ -8,7 +8,7 @@ import path from 'path';
 function findSuffixes (name, files) {
   let result = [];
   for (let file of files) {
-    const regex = new RegExp (`${name}\\.([a-zA-Z]+)\.js`);
+    const regex = new RegExp (`${name}\\.([a-zA-Z]+)\\.js`);
     const match = file.match (regex);
     if (match) {
       if (file.startsWith (name)) {
