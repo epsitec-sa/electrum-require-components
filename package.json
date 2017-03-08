@@ -4,7 +4,7 @@
   "description": "This Electrum build tool generates a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
-    "electrum-require-components": "./bin/bin.js"
+    "electrum-require-components": "./bin/electrum-require-components"
   },
   "scripts": {
     "babel": "babel --quiet --out-dir lib src && babel --quiet --out-dir lib.test src.test",
