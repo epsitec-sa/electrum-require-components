@@ -1,6 +1,6 @@
 {
   "name": "electrum-require-components",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "This Electrum build tool generates a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
@@ -34,6 +34,7 @@
     "babel-env": "^1.6.0",
     "mai-chai": "^3.3.2",
     "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "require-self": "^0.1.0",
     "rimraf": "^2.6.1"
   }
