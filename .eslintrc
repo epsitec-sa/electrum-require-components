@@ -23,7 +23,7 @@
     "indent": [2, 2, { "SwitchCase": 1 }],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "keyword-spacing": [2, {}],
-    "linebreak-style": [2, "windows"],
+    "linebreak-style": [2, "unix"],
     "max-depth": 0,
     "max-len": [2, 120],
     "max-params": 0,
