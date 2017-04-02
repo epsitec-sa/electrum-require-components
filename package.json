@@ -1,6 +1,6 @@
 {
   "name": "electrum-require-components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This Electrum build tool generates a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/epsitec-sa/electrum-require-components#readme",
   "devDependencies": {
-    "babel-env": "^1.6.1",
+    "babel-env": "^2.0.1",
     "generic-js-env": "^2.0.1",
     "mai-chai": "^3.3.2",
     "react": "^15.4.2",
