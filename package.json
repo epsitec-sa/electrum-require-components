@@ -1,10 +1,10 @@
 {
   "name": "electrum-require-components",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "This Electrum build tool generates a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {
-    "electrum-require-components": "./bin/electrum-require-components"
+    "electrum-require-components": "./bin.js"
   },
   "scripts": {
     "babel": "babel --quiet --out-dir lib src && babel --quiet --out-dir lib.test src.test",
