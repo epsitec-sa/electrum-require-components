@@ -1,8 +1,7 @@
-'use strict';
+/* global process console */
+/* eslint no-console: 0 */
 
 import path from 'path';
-
-/* global process */
 
 let dashdash = false;
 let optionWrap = false;

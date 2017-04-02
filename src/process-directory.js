@@ -1,5 +1,3 @@
-'use strict';
-
 import fs from 'fs';
 import path from 'path';
 
@@ -23,7 +21,7 @@ function findSuffixes (name, files) {
 
 export default function processDirectory (root, dir, suffix, next) {
   if (typeof dir === 'string') {
-    dir = [dir];
+    dir = [ dir ];
   }
   if (Array.isArray (dir) === false) {
     throw new Error ('dir should be a string or an array of strings');
@@ -57,22 +55,22 @@ export default function processDirectory (root, dir, suffix, next) {
 
 function traverse (root, dirs, collect, next) {
   const rootPath = path.join (root, ...dirs);
-  fs.lstat (rootPath, (err, stats) => {
-    if (err) {
-      next (err);
+  fs.lstat (rootPath, (err0) => {
+    if (err0) {
+      next (err0);
     } else {
-      fs.readdir (rootPath, (err, files) => {
+      fs.readdir (rootPath, (_, files) => {
         let pending = files.length;
         for (let file of files) {
           const filePath = path.join (root, ...dirs, file);
-          fs.lstat (filePath, (err, stats) => {
-            if (err) {
-              next (err);
+          fs.lstat (filePath, (err1, stats) => {
+            if (err1) {
+              next (err1);
             } else {
               if (stats.isDirectory ()) {
-                traverse (root, [...dirs, file], collect, err => {
-                  if (err) {
-                    next (err);
+                traverse (root, [...dirs, file], collect, err2 => {
+                  if (err2) {
+                    next (err2);
                   } else {
                     if (--pending === 0) {
                       next ();

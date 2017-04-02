@@ -1,11 +1,10 @@
-'use strict';
+/* global process console */
+/* eslint no-console: 0 */
 
 import processDirectory from './process-directory.js';
 import emit from './source-emitter.js';
 import path from 'path';
 import fs from 'fs';
-
-/* global process */
 
 /******************************************************************************/
 
@@ -24,7 +23,7 @@ export default function main (rootDir, args, options) {
 
   function emitSource (result) {
     if (options.optionWrap) {
-      return emit (result, `import Electrum from 'electrum';`, emitWrap);
+      return emit (result, 'import Electrum from \'electrum\';', emitWrap);
     } else {
       return emit (result);
     }
@@ -43,9 +42,9 @@ export default function main (rootDir, args, options) {
         if (options.optionCrlf) {
           source = source.split ('\n').join ('\r\n');
         }
-        fs.writeFile (outputPath, source, err => {
-          if (err) {
-            console.error (err);
+        fs.writeFile (outputPath, source, error => {
+          if (error) {
+            console.error (error);
             process.exit (1);
           } else {
             console.log ('Generated ' + outputPath + ', ' + source.split ('\n').length + ' lines');

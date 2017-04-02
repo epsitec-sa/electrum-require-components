@@ -1,9 +1,7 @@
-'use strict';
+/* global describe it __dirname */
 
 import path from 'path';
-
 import {expect} from 'mai-chai';
-
 import processDirectory from '../src/process-directory.js';
 
 const rootDir = path.join (__dirname, '../src');
@@ -27,7 +25,7 @@ describe ('Require components', () => {
     it ('produces expected results', done => {
       processDirectory (rootDir, 'sample', '.foo.js', (err, result) => {
         expect (result).to.have.length (2);
-        expect (result[0]).to.deep.equal (['a', 'sample/a/a.foo.js', ['xyz']]);
+        expect (result[0]).to.deep.equal (['a', 'sample/a/a.foo.js', [ 'xyz' ]]);
         expect (result[1]).to.deep.equal (['b', 'sample/b/b.foo.js', []]);
         done ();
       });

@@ -9,7 +9,8 @@
   "scripts": {
     "babel": "babel --quiet --out-dir lib src && babel --quiet --out-dir lib.test src.test",
     "clean": "rimraf ./lib && rimraf ./lib.test",
-    "compile": "npm run clean && require-self && npm run babel",
+    "compile": "npm run clean && require-self && npm run eslint && npm run babel",
+    "eslint": "eslint src src.test",
     "mocha": "mocha lib.test/**/*.js",
     "prepublish": "npm run compile",
     "test": "npm run compile && npm run mocha",
@@ -32,6 +33,7 @@
   "homepage": "https://github.com/epsitec-sa/electrum-require-components#readme",
   "devDependencies": {
     "babel-env": "^1.6.0",
+    "generic-js-env": "^2.0.1",
     "mai-chai": "^3.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
