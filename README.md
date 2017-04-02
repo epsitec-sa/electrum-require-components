@@ -17,7 +17,6 @@ found in the source folder `./src`, looking for `*.component.js`.
 Here is an example of a resulting source file with `--wrap`:
 
 ```javascript
-'use strict';
 import Electrum from 'electrum';
 import _CheckBox from './widgets/buttons/check-box.component.js'
 import _Panel from './widgets/layout/panel.component.js';
@@ -28,7 +27,6 @@ export const Panel = Electrum.wrap ('Panel', _Panel);
 And the same example without `--wrap`:
 
 ```javascript
-'use strict';
 import _CheckBox from './widgets/buttons/check-box.component.js'
 import _Panel from './widgets/layout/panel.component.js';
 export const CheckBox = _CheckBox;
@@ -44,7 +42,6 @@ the `panel.component.js` file), then they will also get imported and
 provided to `Electrum.wrap` as an additional argument:
 
 ```javascript
-'use strict';
 import Electrum from 'electrum';
 import _Panel from './widgets/layout/Panel.component.js';
 import _Panel$about from './widgets/layout/panel.about.js';

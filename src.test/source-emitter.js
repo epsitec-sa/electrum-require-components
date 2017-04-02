@@ -7,9 +7,7 @@ describe ('Require components', () => {
   describe ('emit()', () => {
     it ('produces expected source code', () => {
       const result = emit ([['a', 'bla/a.js', [ 'xyz' ]], ['b', 'foo/b.js', []]]);
-      expect (result).to.equal (`'use strict';
-
-import _A from './bla/a.js';
+      expect (result).to.equal (`import _A from './bla/a.js';
 import _A$xyz from './bla/a.xyz.js';
 import _B from './foo/b.js';
 export const A = _A;
@@ -19,8 +17,7 @@ export const B = _B;
     it ('produces expected source code with additional require', () => {
       const result = emit ([['a', 'bla/a.js', [ 'xyz' ]], ['b', 'foo/b.js', []]],
         'require foo from \'foo\';');
-      expect (result).to.equal (`'use strict';
-require foo from 'foo';
+      expect (result).to.equal (`require foo from 'foo';
 import _A from './bla/a.js';
 import _A$xyz from './bla/a.xyz.js';
 import _B from './foo/b.js';
@@ -37,8 +34,7 @@ export const B = _B;
             '' :
             ', {' + more.map (x => `${x}: _${name}$${x}`).join (', ') + '}'})`
       );
-      expect (result).to.equal (`'use strict';
-require foo from 'foo';
+      expect (result).to.equal (`require foo from 'foo';
 import _A from './bla/a.js';
 import _A$xyz from './bla/a.xyz.js';
 import _A$qrs from './bla/a.qrs.js';

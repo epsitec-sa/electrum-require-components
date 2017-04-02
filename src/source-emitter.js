@@ -50,7 +50,7 @@ function flatten (ary) {
 export default function emit (components, require, inject) {
   const imports = flatten (components.map (x => getImports (...x)));
   const exports = components.map (x => getExport (inject, ...x));
-  const head = '\'use strict\';' + '\n' + (require || '') + '\n';
+  const head = (require ? require + '\n' : '');
   return head + imports.join ('\n') + '\n' + exports.join ('\n') + '\n';
 }
 
