@@ -1,6 +1,6 @@
 {
   "name": "electrum-require-components",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "This Electrum build tool generates a source file with a list of requires.",
   "main": "lib/index.js",
   "bin": {

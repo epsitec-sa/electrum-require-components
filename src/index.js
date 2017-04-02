@@ -5,7 +5,7 @@ import path from 'path';
 
 let dashdash = false;
 let optionWrap = false;
-let optionCrlf = process.platform === 'win32';
+let optionCrlf = false;
 
 var args = process.argv.slice (2).filter (arg => {
   if (dashdash) {
